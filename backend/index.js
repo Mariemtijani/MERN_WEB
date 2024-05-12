@@ -8,8 +8,6 @@ const PORT = process.env.PORT || 3500;
 
 // const mongoose = require('mongoose')
 
-console.log(__dirname)
-
 //custom middleware logger
 app.use(logger);
 
@@ -20,14 +18,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //Cross origin resuorce sharing
-// app.use(cors());
+app.use(cors());
 
 //servw static files
 app.use('/', express.static(path.join(__dirname,'public')));
 
-app.get('/', (req,res) => {
-    res.send('hello world !');
-})
+//routes
+app.use('/' , require('./routes/root'));
+app.use('/artisans' , require('./routes/api/artisans'));
+
+app.all('*', (req, res) => {
+    res.status(404);
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404.html'));
+    } else if (req.accepts('json')) {
+        res.json({ "error": "404 Not Found" });
+    } else {
+        res.type('txt').send("404 Not Found");
+    }
+});
 
 
 app.use(errorHandler);

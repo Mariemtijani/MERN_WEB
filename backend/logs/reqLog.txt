@@ -1,0 +1,11 @@
+20240512	19:28:28	e00d5a46-6a1d-4079-a39a-b2bd4aa96873	GET	undefined	/
+20240512	19:28:54	53efbae3-b9f7-4f68-bbcc-90d5bf819fc6	GET	undefined	/
+20240512	19:29:22	162e7264-346c-4630-81a2-a5e26b466544	OPTIONS	https://www.google.com	/
+20240512	19:29:22	29ed737f-3366-4582-9f42-a25651920c9f	GET	https://www.google.com	/
+20240512	19:29:59	6862ee34-8311-42cc-b11e-3d3e363a8af1	OPTIONS	https://www.google.com	/
+20240512	19:29:59	1fbaafd3-7a30-4860-8428-325c31463d06	GET	https://www.google.com	/
+20240512	20:23:36	37d57046-0849-4e1a-9b2c-afaf19221cd3	GET	undefined	/artisans
+20240512	20:24:09	8d826036-16e2-404c-88b0-d62032ad7619	POST	undefined	/artisans
+20240512	20:25:01	7fa40dee-805a-4ca9-9eca-81ace8e542ef	POST	undefined	/artisans
+20240512	20:25:09	2b25e1d4-fe73-4d03-aabd-a0b11611a0e1	PUT	undefined	/artisans
+20240512	20:25:24	a2eb980c-561b-4aaf-a8f2-bda90890ce1e	DELETE	undefined	/artisans
