@@ -1,31 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const data = {};
-data.artisans = require('../../data/artisans.json');
+const artisansController = require('../../controllers/artisansController');
+const ROLES_LIST = require('../../config/roles_list');
+const verifyRoles = require('../../middleware/verifyRoles');
 
 router.route('/')
-    .get((req,res) =>  {
-        res.json(data.artisans);
-    })
-    .post((req, res) => {
-        res.json({
-            "firstname" : req.body.firstname,
-            "lastname" : req.body.lastname
-        });
-    })
-    .put((req,res) => {
-        res.json({
-            "firstname" : req.body.firstname,
-            "lastname" : req.body.lastname
-        });
-    })
-    .delete((req,res) => {
-        res.json({"id" : req.body.id})
-    })
+    .get(artisansController.getAllArtisan)
+    .post(verifyRoles(ROLES_LIST.Admin), artisansController.createNewArtisan)
+    .put(verifyRoles(ROLES_LIST.Admin),artisansController.updateArtisan)
+    .delete(verifyRoles(ROLES_LIST.Admin),artisansController.deleteArtisan)
 
 router.route('/:id')
-    .get((req,res) => {
-        res.json({"id": req.params.id});
-    })
+    .get(artisansController.getArtisan)
 
 module.exports = router;
