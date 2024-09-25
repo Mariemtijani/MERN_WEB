@@ -11,6 +11,8 @@ const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConnect');
+const registerController = require('./controllers/registerController')
+
 
 const PORT = process.env.PORT || 3500;
 
@@ -27,7 +29,7 @@ app.use(credentails);
 app.use(cors(corsOptions));
 
 //middleware for handling urlencoded form data 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 //middleware for json
 app.use(express.json());
@@ -39,18 +41,33 @@ app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname,'public')));
 
 //routes
+
+
+var authRouter = require('./routes/oauth');
+var requestRouter = require('./routes/request');
+var htmlAuthRouter = require('./routes/htmlAuth');
+
+app.use('/oauth', authRouter);
+app.use('/request', requestRouter);
+app.use('/htmlAuth',htmlAuthRouter);
+
 app.use('/' , require('./routes/root'));
 app.use('/register', require('./routes/register'))
 app.use('/auth', require('./routes/auth'));
 app.use('/refresh' , require('./routes/refresh'));
 app.use('/logout' , require('./routes/logout'));
+app.use('/categories', require('./routes/api/category'));
+app.use('/users', require('./routes/api/user'));
+app.use('/services', require('./routes/api/service'));
+app.use('/cards', require('./routes/api/card'));
+
+app.post('/updateUserRole', registerController.updateUserRole);
+
 
 //anything after the verifyJWT will use the token 
 app.use(verifyJWT);
 app.use('/artisans' , require('./routes/api/artisans'));
-app.use('/users', require('./routes/api/user'));
-app.use('/categories', require('./routes/api/category'));
-app.use('/services', require('./routes/api/service'));
+
 
 app.all('*', (req, res) => {
     res.status(404);

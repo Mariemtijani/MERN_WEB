@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+.cover {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 30px;
+}
+.cover .image-section {
+    width: 50%;
+   
+}
+
+/* .cover .image-section img{
+    width: 40%;
+} */
+
+.cover .header-section {
+    width: 50%;
+    margin-top: 60px;
+}
+.cover .header-section .headers  {
+   font-family: 'cairo';
+   
+}
+.cover .header-section .headers h1 {
+    font-weight: 800;
+    line-height: 80px;
+}
+.cover .header-section .headers h1 span {
+    text-decoration: underline #e85f4c;
+    text-underline-offset: 15px;
+}
+.cover .header-section .headers p {
+    font-weight: 400;
+}
+
+
+h2 , p , a, button {
+    font-family: 'cairo';
+}

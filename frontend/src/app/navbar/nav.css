@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+
+.nav-item {
+    font-family: 'cairo';
+    font-weight: 700;
+}

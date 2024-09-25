@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const cardSchema = new Schema ({
     serviceId : {
@@ -7,6 +7,10 @@ const cardSchema = new Schema ({
         required : true
     },
     userId : {
+        type : String,
+        
+    },
+    artisanId : {
         type : String,
         required : true
     }

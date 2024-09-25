@@ -18,9 +18,9 @@ const serviceSchema = new Schema ({
         type : String,
         required : true
     },
-    image : {
-        type : String,
-        required : true
+   image: {
+        data: Buffer,
+        contentType: String
     },
     price : {
         type : Number,
@@ -29,7 +29,10 @@ const serviceSchema = new Schema ({
     deliveryTime : {
         type : Number,
         required : true
+    },
+    approved : {
+        type : Boolean
     }
 })
 
-module.exports = mongoose.model('Service' , serviceSchema)
+module.exports = mongoose.model('Service' , serviceSchema);

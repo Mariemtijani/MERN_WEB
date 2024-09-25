@@ -9,6 +9,12 @@ const artisanSchema = new Schema({
     lastname : {
         type: String,
         required : true
+    },
+    skill : {
+        type : String
+    },
+    phoneNumber : {
+        type : String
     }
 });
 
